@@ -1,0 +1,11 @@
+span.dirty {
+  color: red;
+}
+
+article {
+  cursor: pointer;
+}
+
+ul {
+  list-style-type: none;
+}

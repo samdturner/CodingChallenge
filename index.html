@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="master.css" media="screen" title="no title" charset="utf-8">
+    <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
+    <script src="scripts/mealView.js"></script>
+  </head>
+  <body>
+    <section class="meal-descriptions">
+
+    </section>
+
+    <section class="meal-edit-form">
+
+    </section>
+  </body>
+
+  <script type="text/javascript" charset="utf-8">
+    $(document).ready(function () {
+      $.ajax({
+        url: "http://private-anon-e398381b1-ivapi.apiary-mock.com/meals",
+        method: "GET",
+        success: function (response) {
+          var meals = response.meals;
+          for(var i = 0; i < meals.length; i++){
+            var mealObj = meals[i];
+            var meal = new window.Meal(
+                                        mealObj.id,
+                                        mealObj.meal,
+                                        mealObj.calories,
+                                        mealObj.total_fat,
+                                        mealObj.cholesterol,
+                                        mealObj.image,
+                                        mealObj.editable
+                                      );
+            meal.render();
+          }
+        }
+      });
+    })
+  </script>
+</html>
